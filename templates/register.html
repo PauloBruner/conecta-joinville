@@ -1,10 +1,14 @@
-<link rel="stylesheet" href="/static/style.css">
+{% extends "layout.html" %}
 
-<h2>Cadastrar</h2>
+{% block content %}
 
-<form method="POST">
-<input name="nome" placeholder="Nome">
-<input name="email" placeholder="Email">
-<input name="senha" placeholder="Senha">
-<button>Cadastrar</button>
+<h2>Criar conta</h2>
+
+<form method="POST" class="form-box">
+    <input name="nome" placeholder="Nome">
+    <input name="email" placeholder="Email">
+    <input name="senha" placeholder="Senha" type="password">
+    <button class="btn">Cadastrar</button>
 </form>
+
+{% endblock %}

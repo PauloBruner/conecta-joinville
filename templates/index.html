@@ -1,7 +1,11 @@
-<link rel="stylesheet" href="/static/style.css">
+{% extends "layout.html" %}
+
+{% block content %}
 
 <h1>ConectaJoinville</h1>
 <p>Conectando quem precisa com quem quer ajudar</p>
 
-<a href="/login">Entrar</a>
-<a href="/register">Cadastrar</a>
+<a href="/login" class="btn">Entrar</a>
+<a href="/register" class="btn">Cadastrar</a>
+
+{% endblock %}
