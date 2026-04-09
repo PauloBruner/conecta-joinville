@@ -8,19 +8,21 @@ body {
 .topbar {
     background: #2ecc71;
     color: white;
-    padding: 15px;
+    padding: 10px;
     text-align: center;
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 15px;
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 /* CONTAINER */
 .container {
     max-width: 420px;
     margin: auto;
-    padding: 10px;
+    padding: 5px 10px;
 }
 
 /* GRID DE OPÇÕES */
