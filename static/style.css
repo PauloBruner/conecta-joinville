@@ -1,26 +1,29 @@
 body {
     margin: 0;
     font-family: Arial;
-    background: #f2f5f9;
+    background: #e5e7eb; /* fundo externo (cinza app) */
+    display: flex;
+    justify-content: center;
 }
 
 /* TOPO */
 .topbar {
     background: #2ecc71;
     color: white;
-    padding: 10px;
+    padding: 12px;
     text-align: center;
     font-weight: 600;
     font-size: 15px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    border-radius: 0 0 15px 15px;
 }
 
 /* CONTAINER */
 .container {
     max-width: 420px;
-    margin: auto;
-    padding: 5px 10px;
+    width: 100%;
+    min-height: 100vh;
+    background: #f2f5f9;
+    border-radius: 20px;
+    overflow: hidden;
 }
 
 /* GRID DE OPÇÕES */

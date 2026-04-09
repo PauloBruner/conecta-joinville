@@ -212,3 +212,6 @@ criar_tabelas()
 
 if __name__ == "__main__":
     app.run(debug=True)
+    
+    
+   # git add . git commit -m "atualização visual app" git push 
