@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ponto de Apoio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topbar">
+    <span>Ponto de Apoio</span>
+    <button id="btn-logout" class="logout">Sair</button>
+</div>
+
+<div class="container">
+    <h2>Nova Necessidade</h2>
+
+    <form id="form-nova" class="form-box">
+        <input id="titulo" placeholder="Título" required>
+        <textarea id="descricao" placeholder="Descrição" required></textarea>
+        <input id="bairro" placeholder="Bairro" required>
+        <button class="btn" type="submit">Salvar</button>
+        <p id="erro" class="msg-erro"></p>
+    </form>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/auth.js"></script>
+<script>
+let usuarioAtual = null;
+configurarLogout("btn-logout");
+exigirLogin((user) => { usuarioAtual = user; });
+
+document.getElementById("form-nova").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const titulo = document.getElementById("titulo").value;
+    const descricao = document.getElementById("descricao").value;
+    const bairro = document.getElementById("bairro").value;
+
+    try {
+        await db.collection("necessidades").add({
+            titulo: titulo,
+            descricao: descricao,
+            bairro: bairro,
+            criadoPor: usuarioAtual.uid,
+            criadoEm: firebase.firestore.FieldValue.serverTimestamp(),
+        });
+        window.location.href = "dashboard.html";
+    } catch (erro) {
+        console.error(erro);
+        document.getElementById("erro").textContent = "Não foi possível salvar. Tente novamente.";
+    }
+});
+</script>
+
+</body>
+</html>

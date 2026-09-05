@@ -1,0 +1,10 @@
+# Firebase
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+*serviceAccountKey*.json
+*-firebase-adminsdk-*.json
+
+# Node (caso ferramentas de dev sejam adicionadas no futuro)
+node_modules/

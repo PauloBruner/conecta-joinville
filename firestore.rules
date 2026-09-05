@@ -1,0 +1,43 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Dados de perfil complementares, vinculados ao uid do Firebase Auth.
+    match /perfis/{uid} {
+      allow read: if request.auth != null;
+      allow create, update: if request.auth != null && request.auth.uid == uid;
+      allow delete: if false;
+    }
+
+    // Pedidos de ajuda. Leitura é pública; escrita exige login e só o
+    // autor pode editar/excluir o próprio pedido.
+    match /necessidades/{necessidadeId} {
+      allow read: if true;
+      allow create: if request.auth != null
+        && request.resource.data.criadoPor == request.auth.uid;
+      allow update, delete: if request.auth != null
+        && resource.data.criadoPor == request.auth.uid;
+    }
+
+    // Registro de "quero ajudar". O ID do documento é
+    // "{necessidadeId}_{uid}", o que impede nativamente que o mesmo
+    // usuário ajude duas vezes a mesma necessidade (a segunda tentativa
+    // vira uma operação de "update", que é bloqueada abaixo).
+    match /ajudas/{ajudaId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null
+        && request.resource.data.uid == request.auth.uid
+        && ajudaId == request.resource.data.necessidadeId + '_' + request.auth.uid;
+      allow update: if false;
+      allow delete: if request.auth != null && resource.data.uid == request.auth.uid;
+    }
+
+    // Cadastro de voluntários. Um documento por usuário (ID = uid).
+    match /voluntarios/{uid} {
+      allow read: if request.auth != null;
+      allow create, update: if request.auth != null && request.auth.uid == uid;
+      allow delete: if false;
+    }
+  }
+}

@@ -12,10 +12,23 @@ body {
     text-align: center;
     font-weight: 600;
     font-size: 15px;
-
-    /* 👇 ESSENCIAL */
     width: 100%;
     box-sizing: border-box;
+    position: relative;
+}
+
+.topbar .logout {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 13px;
+    font-weight: normal;
+    text-decoration: underline;
+    cursor: pointer;
+    background: none;
+    border: none;
 }
 
 /* CONTAINER */
@@ -46,7 +59,6 @@ body {
     transition: 0.2s;
 }
 
-/* 👇 efeito profissional */
 .card-option:hover {
     transform: scale(1.03);
     background: #ecf9f1;
@@ -71,10 +83,16 @@ body {
     border-radius: 10px;
     margin-top: 10px;
     font-size: 16px;
+    cursor: pointer;
 }
 
 .btn-ajudar:hover {
     background: #27ae60;
+}
+
+.btn-ajudar:disabled {
+    background: #a5d6b8;
+    cursor: default;
 }
 
 /* NOVA NECESSIDADE */
@@ -100,6 +118,17 @@ body {
     font-size: 14px;
 }
 
+.msg-erro {
+    color: #c0392b;
+    font-size: 14px;
+    text-align: center;
+}
+
+.msg-vazio {
+    color: gray;
+    text-align: center;
+}
+
 /* STATS */
 .stats {
     display: flex;
@@ -120,12 +149,13 @@ body {
     font-size: 24px;
 }
 
-/* FORMULÁRIOS (NOVO - NÃO QUEBRA NADA) */
+/* FORMULÁRIOS */
 .form-box {
     background: white;
     padding: 20px;
     border-radius: 10px;
     width: 320px;
+    max-width: 90%;
     margin: 20px auto;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
@@ -137,9 +167,10 @@ input, textarea {
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    font-family: inherit;
 }
 
-/* BOTÃO PADRÃO (NOVO) */
+/* BOTÃO PADRÃO */
 .btn {
     display: inline-block;
     background: #2ecc71;
@@ -151,8 +182,27 @@ input, textarea {
     border: none;
     cursor: pointer;
     transition: 0.2s;
+    font-size: 15px;
 }
 
 .btn:hover {
     background: #27ae60;
+}
+
+.btn:disabled {
+    background: #a5d6b8;
+    cursor: default;
+}
+
+ul.lista-simples {
+    list-style: none;
+    padding: 0;
+}
+
+ul.lista-simples li {
+    background: white;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }

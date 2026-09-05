@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ponto de Apoio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topbar">
+    <span id="topbar-titulo">Ponto de Apoio</span>
+    <button id="btn-logout" class="logout">Sair</button>
+</div>
+
+<div class="container">
+
+    <h3 id="saudacao">Olá 👋</h3>
+    <p>Veja como você pode ajudar hoje</p>
+
+    <div class="stats">
+        <div class="stat-card">
+            <h3 id="total-ajudas">-</h3>
+            <p>Ajudas realizadas</p>
+        </div>
+        <div class="stat-card">
+            <h3 id="total-necessidades">-</h3>
+            <p>Pedidos ativos</p>
+        </div>
+        <div class="stat-card">
+            <h3 id="total-usuarios">-</h3>
+            <p>Usuários</p>
+        </div>
+    </div>
+
+    <div class="grid">
+        <a href="nova_necessidade.html" class="card-option">💖 Preciso de Ajuda</a>
+        <a href="dashboard.html?tipo=ajudar" class="card-option">🤝 Quero Ajudar</a>
+        <a href="voluntario.html" class="card-option">🙋 Voluntário</a>
+        <a href="ongs.html" class="card-option">🏢 ONGs</a>
+    </div>
+
+    <div id="map" style="height:250px; border-radius:15px; margin-top: 15px;"></div>
+
+    <h3>Necessidades próximas</h3>
+
+    <div id="lista-necessidades">
+        <p class="msg-vazio">Carregando...</p>
+    </div>
+
+    <a href="nova_necessidade.html" class="btn-nova">+ Nova necessidade</a>
+
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/auth.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=SUBSTITUA_PELA_MAPS_API_KEY"></script>
+<script src="js/dashboard.js"></script>
+
+</body>
+</html>
