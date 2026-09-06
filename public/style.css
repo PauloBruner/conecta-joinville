@@ -226,3 +226,99 @@ a{ color:var(--teal-600); }
 .pessoa-info p{ margin:0; }
 .pessoa-nome{ font-weight:600; font-size:15px; }
 .pessoa-email{ font-size:13px; color:var(--ink-soft); }
+
+/* ---- Landing page (index.html) ---- */
+.wrap{
+  max-width:1100px;
+  margin:0 auto;
+  padding:28px 24px 40px;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+.brand{
+  font-family:'Sora',sans-serif;
+  font-weight:700;
+  font-size:16px;
+  color:var(--teal-900);
+  letter-spacing:-0.01em;
+}
+.hero{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:32px 0 8px;
+  gap:22px;
+}
+.hero-text h1{
+  font-size:clamp(32px,6vw,50px);
+  line-height:1.12;
+  letter-spacing:-0.015em;
+  max-width:16ch;
+}
+.sub{
+  font-size:17px;
+  line-height:1.55;
+  color:var(--ink-soft);
+  max-width:46ch;
+  margin:0;
+}
+.actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:6px;
+}
+.connector{
+  margin-top:18px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  max-width:320px;
+}
+.connector svg{ width:100%; height:auto; display:block; }
+.connector-labels{
+  display:flex;
+  justify-content:space-between;
+  width:100%;
+  font-size:13px;
+  font-weight:600;
+  color:var(--ink-soft);
+}
+.props{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:16px;
+  margin-top:36px;
+  padding-top:28px;
+  border-top:1px solid var(--border);
+}
+.prop{ display:flex; gap:12px; align-items:flex-start; }
+.prop-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--amber-500);
+  margin-top:7px;
+  flex-shrink:0;
+}
+.prop p{ margin:0; font-size:14.5px; line-height:1.5; color:var(--ink-soft); }
+.prop b{ color:var(--ink); font-weight:600; }
+
+.wrap footer{
+  font-size:13px;
+  color:var(--ink-soft);
+  padding-top:28px;
+}
+
+@media (min-width:760px){
+  .wrap{ padding:40px 48px 56px; }
+  .hero{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    align-items:center;
+    gap:48px;
+  }
+  .hero-text{ max-width:520px; }
+  .props{ grid-template-columns:1fr 1fr; column-gap:28px; }
+  .connector{ max-width:380px; justify-self:center; }
+}

@@ -5,25 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ponto de Apoio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="header-bar">
-    <div class="header-inner">
-        <a class="header-brand" href="index.html">Ponto de Apoio</a>
-    </div>
-</div>
+<div class="wrap">
+    <div class="brand">Ponto de Apoio</div>
 
-<div class="container">
-    <div class="card text-center" style="max-width:520px; margin:24px auto;">
-        <h1>Ponto de Apoio</h1>
-        <p class="muted" style="margin-bottom:20px;">Conectando quem precisa com quem quer ajudar.</p>
+    <div class="hero">
+        <div class="hero-text">
+            <h1>Quem precisa de ajuda e quem pode ajudar, agora no mesmo lugar.</h1>
+            <p class="sub">
+                Necessidades reais do seu bairro, visíveis para quem quer fazer a diferença —
+                sem depender de grupo de WhatsApp ou coincidência.
+            </p>
+            <div class="actions">
+                <a class="btn btn-primary" href="register.html">Criar conta</a>
+                <a class="btn btn-ghost" href="login.html">Entrar</a>
+            </div>
 
-        <a href="login.html" class="btn btn-primary">Entrar</a>
-        <a href="register.html" class="btn btn-ghost">Cadastrar</a>
+            <div class="props">
+                <div class="prop">
+                    <span class="prop-dot"></span>
+                    <p><b>Necessidades reais, por bairro.</b> Veja o que está sendo pedido perto de você agora.</p>
+                </div>
+                <div class="prop">
+                    <span class="prop-dot"></span>
+                    <p><b>Ajude com um clique.</b> Registre sua ajuda numa necessidade em segundos.</p>
+                </div>
+                <div class="prop">
+                    <span class="prop-dot"></span>
+                    <p><b>Sempre atualizado.</b> Nada se perde em conversas antigas ou grupos esquecidos.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="connector">
+            <svg viewBox="0 0 260 120" width="260" height="120" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustração de uma linha conectando quem precisa de ajuda a quem pode ajudar">
+                <path d="M30 90 C 90 90, 90 30, 130 30 C 170 30, 170 90, 230 90" stroke="#0F766E" stroke-width="2.5" stroke-dasharray="1 9" stroke-linecap="round"/>
+                <circle cx="30" cy="90" r="9" fill="#DCEEEA" stroke="#0F766E" stroke-width="2"/>
+                <circle cx="230" cy="90" r="9" fill="#FDECD8" stroke="#F2994A" stroke-width="2"/>
+                <circle cx="130" cy="30" r="4" fill="#F2994A"/>
+            </svg>
+            <div class="connector-labels">
+                <span>quem precisa</span>
+                <span>quem ajuda</span>
+            </div>
+        </div>
     </div>
+
+    <footer>Joinville · Santa Catarina</footer>
 </div>
 
 </body>
