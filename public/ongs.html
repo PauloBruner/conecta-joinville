@@ -3,21 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ponto de Apoio</title>
+    <title>Participantes — Ponto de Apoio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="topbar">
-    <span>Ponto de Apoio</span>
-    <button id="btn-logout" class="logout">Sair</button>
+<div class="header-bar">
+    <div class="header-inner">
+        <a class="header-brand" href="dashboard.html">Ponto de Apoio</a>
+        <nav class="header-nav">
+            <a href="dashboard.html">Painel</a>
+            <a href="nova_necessidade.html">Nova necessidade</a>
+            <a href="voluntario.html">Voluntário</a>
+            <a href="ongs.html">Participantes</a>
+            <button id="btn-logout" class="sair">Sair</button>
+        </nav>
+    </div>
 </div>
 
 <div class="container">
-    <h2>ONGs / Usuários cadastrados</h2>
-    <ul id="lista-usuarios" class="lista-simples">
-        <li class="msg-vazio">Carregando...</li>
-    </ul>
+    <h2>Participantes</h2>
+    <p class="muted" style="margin-bottom:24px;">Pessoas cadastradas na plataforma.</p>
+
+    <div id="lista-usuarios">
+        <p class="empty-state">Carregando...</p>
+    </div>
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
@@ -27,23 +39,43 @@
 <script src="js/auth.js"></script>
 <script>
 configurarLogout("btn-logout");
+
+function iniciais(nome) {
+    const partes = (nome || "").trim().split(/\s+/).filter(Boolean);
+    if (partes.length === 0) return "?";
+    const primeira = partes[0][0];
+    const ultima = partes.length > 1 ? partes[partes.length - 1][0] : "";
+    return (primeira + ultima).toUpperCase();
+}
+
 exigirLogin(async () => {
     const lista = document.getElementById("lista-usuarios");
     try {
         const snap = await db.collection("perfis").get();
         if (snap.empty) {
-            lista.innerHTML = '<li class="msg-vazio">Nenhum usuário cadastrado ainda.</li>';
+            lista.innerHTML = '<p class="empty-state">Nenhum usuário cadastrado ainda.</p>';
             return;
         }
         lista.innerHTML = "";
         snap.forEach((doc) => {
-            const li = document.createElement("li");
-            li.textContent = doc.data().nome || "(sem nome)";
-            lista.appendChild(li);
+            const dados = doc.data();
+            const item = document.createElement("div");
+            item.className = "pessoa-item";
+            item.innerHTML = `
+                <div class="avatar"></div>
+                <div class="pessoa-info">
+                    <p class="pessoa-nome"></p>
+                    <p class="pessoa-email"></p>
+                </div>
+            `;
+            item.querySelector(".avatar").textContent = iniciais(dados.nome);
+            item.querySelector(".pessoa-nome").textContent = dados.nome || "(sem nome)";
+            item.querySelector(".pessoa-email").textContent = dados.email || "";
+            lista.appendChild(item);
         });
     } catch (erro) {
         console.error(erro);
-        lista.innerHTML = '<li class="msg-erro">Não foi possível carregar a lista.</li>';
+        lista.innerHTML = '<p class="empty-state">Não foi possível carregar a lista.</p>';
     }
 });
 </script>

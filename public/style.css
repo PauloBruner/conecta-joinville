@@ -1,208 +1,228 @@
-body {
-    margin: 0;
-    font-family: Arial;
-    background: #f2f5f9;
+/* ===== Ponto de Apoio — Design System ===== */
+
+:root{
+  --paper:#F5FAF9;
+  --ink:#16302C;
+  --ink-soft:#4A5C58;
+  --teal-900:#0B4A43;
+  --teal-600:#0F766E;
+  --teal-100:#DCEEEA;
+  --amber-500:#F2994A;
+  --amber-100:#FDECD8;
+  --border:#CBE2DD;
+  --white:#FFFFFF;
+  --danger:#C0392B;
 }
 
-/* TOPO */
-.topbar {
-    background: #2ecc71;
-    color: white;
-    padding: 12px;
-    text-align: center;
-    font-weight: 600;
-    font-size: 15px;
-    width: 100%;
-    box-sizing: border-box;
-    position: relative;
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Inter',sans-serif;
+  -webkit-font-smoothing:antialiased;
 }
 
-.topbar .logout {
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: white;
-    font-size: 13px;
-    font-weight: normal;
-    text-decoration: underline;
-    cursor: pointer;
-    background: none;
-    border: none;
+h1,h2,h3{
+  font-family:'Sora',sans-serif;
+  font-weight:700;
+  letter-spacing:-0.01em;
+  margin:0 0 6px;
 }
 
-/* CONTAINER */
-.container {
-    max-width: 420px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 10px;
+a{ color:var(--teal-600); }
+
+.container{
+  max-width:960px;
+  margin:0 auto;
+  padding:0 24px 40px;
 }
 
-/* GRID DE OPÇÕES */
-.grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
+/* ---- Cabeçalho (todas as páginas logadas) ---- */
+.header-bar{
+  background:var(--teal-900);
+  border-top:5px solid var(--amber-500);
+  padding:16px 24px;
+  margin-bottom:32px;
+}
+.header-inner{
+  max-width:960px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.header-brand{
+  font-family:'Sora',sans-serif;
+  font-weight:700;
+  font-size:17px;
+  color:var(--white);
+  text-decoration:none;
+}
+.header-nav{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+  font-size:14px;
+}
+.header-nav a{
+  color:var(--teal-100);
+  text-decoration:none;
+  font-weight:500;
+}
+.header-nav a:hover{ color:var(--white); }
+.header-nav .sair{ color:var(--amber-500); background:none; border:none; font:inherit; cursor:pointer; padding:0; }
+
+/* ---- Botões ---- */
+.btn{
+  font-family:'Inter',sans-serif;
+  font-weight:600;
+  font-size:15px;
+  padding:12px 22px;
+  border-radius:10px;
+  border:1.5px solid transparent;
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-block;
+  transition:transform .15s ease, background .15s ease;
+}
+.btn:active{ transform:scale(0.97); }
+.btn-primary{ background:var(--teal-600); color:var(--white); border-color:var(--teal-600); }
+.btn-primary:hover{ background:var(--teal-900); border-color:var(--teal-900); }
+.btn-primary:disabled{ background:var(--teal-100); border-color:var(--teal-100); color:var(--ink-soft); cursor:default; transform:none; }
+.btn-ghost{ background:transparent; color:var(--teal-900); border-color:var(--border); }
+.btn-ghost:hover{ border-color:var(--teal-600); }
+.btn-block{ width:100%; text-align:center; }
+.btn-sm{ padding:8px 16px; font-size:13.5px; }
+
+/* ---- Cards ---- */
+.card{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:24px;
+}
+.card-form{
+  max-width:420px;
+  margin:24px auto;
 }
 
-.card-option {
-    background: white;
-    padding: 15px;
-    border-radius: 10px;
-    text-align: center;
-    font-weight: bold;
-    text-decoration: none;
-    color: black;
-    display: block;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    transition: 0.2s;
+/* ---- Formulários ---- */
+.field{ margin-bottom:16px; }
+.field label{
+  display:block;
+  font-size:13.5px;
+  font-weight:600;
+  color:var(--ink-soft);
+  margin-bottom:6px;
+}
+.field input, .field textarea, .field select{
+  width:100%;
+  font-family:'Inter',sans-serif;
+  font-size:15px;
+  padding:11px 13px;
+  border:1.5px solid var(--border);
+  border-radius:9px;
+  background:var(--paper);
+  color:var(--ink);
+}
+.field input:focus, .field textarea:focus, .field select:focus{
+  outline:none;
+  border-color:var(--teal-600);
+}
+.error-text{ color:var(--danger); font-size:13px; margin-top:6px; }
+
+/* ---- Métricas (dashboard) ---- */
+.stats-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-bottom:28px;
+}
+.stat-card{
+  background:var(--teal-100);
+  border-radius:12px;
+  padding:16px 18px;
+}
+.stat-num{
+  font-family:'Sora',sans-serif;
+  font-weight:700;
+  font-size:26px;
+  color:var(--teal-900);
+}
+.stat-label{ font-size:13px; color:var(--ink-soft); margin-top:2px; }
+
+/* ---- Lista de necessidades ---- */
+.necessidade-item{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:16px 18px;
+  margin-bottom:12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  flex-wrap:wrap;
+}
+.necessidade-info h3{ font-size:16px; margin:0 0 4px; }
+.necessidade-info p{ font-size:14px; color:var(--ink-soft); margin:0 0 8px; }
+.tag-bairro{
+  display:inline-block;
+  background:var(--amber-100);
+  color:#8A4B12;
+  font-size:12px;
+  font-weight:600;
+  padding:3px 10px;
+  border-radius:20px;
+}
+.ajuda-count{
+  font-size:13px;
+  color:var(--ink-soft);
+  white-space:nowrap;
 }
 
-.card-option:hover {
-    transform: scale(1.03);
-    background: #ecf9f1;
+/* ---- Estado vazio ---- */
+.empty-state{
+  text-align:center;
+  padding:48px 24px;
+  color:var(--ink-soft);
 }
 
-/* CARDS */
-.card {
-    background: white;
-    padding: 15px;
-    margin: 15px 0;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+/* ---- Utilidades ---- */
+.muted{ color:var(--ink-soft); }
+.mt-24{ margin-top:24px; }
+.text-center{ text-align:center; }
+
+@media (max-width:640px){
+  .stats-row{ grid-template-columns:1fr 1fr; }
+  .necessidade-item{ flex-direction:column; align-items:flex-start; }
 }
 
-/* BOTÃO AJUDAR */
-.btn-ajudar {
-    background: #2ecc71;
-    color: white;
-    border: none;
-    padding: 12px;
-    width: 100%;
-    border-radius: 10px;
-    margin-top: 10px;
-    font-size: 16px;
-    cursor: pointer;
+/* ---- Lista de participantes (ongs.html) ---- */
+.pessoa-item{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:14px 18px;
+  margin-bottom:10px;
+  display:flex;
+  align-items:center;
+  gap:14px;
 }
-
-.btn-ajudar:hover {
-    background: #27ae60;
+.avatar{
+  width:40px;height:40px;border-radius:50%;
+  background:var(--teal-100);
+  color:var(--teal-900);
+  font-family:'Sora',sans-serif;
+  font-weight:700;
+  font-size:14px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
 }
-
-.btn-ajudar:disabled {
-    background: #a5d6b8;
-    cursor: default;
-}
-
-/* NOVA NECESSIDADE */
-.btn-nova {
-    display: block;
-    text-align: center;
-    background: #3498db;
-    color: white;
-    padding: 12px;
-    border-radius: 8px;
-    text-decoration: none;
-    margin: 20px 0;
-    transition: 0.2s;
-}
-
-.btn-nova:hover {
-    background: #2980b9;
-}
-
-/* TEXTO */
-.bairro {
-    color: gray;
-    font-size: 14px;
-}
-
-.msg-erro {
-    color: #c0392b;
-    font-size: 14px;
-    text-align: center;
-}
-
-.msg-vazio {
-    color: gray;
-    text-align: center;
-}
-
-/* STATS */
-.stats {
-    display: flex;
-    gap: 10px;
-    overflow-x: auto;
-}
-
-.stat-card {
-    min-width: 120px;
-}
-
-.stat-card:hover {
-    transform: scale(1.03);
-}
-
-.stat-card h3 {
-    color: #2ecc71;
-    font-size: 24px;
-}
-
-/* FORMULÁRIOS */
-.form-box {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 320px;
-    max-width: 90%;
-    margin: 20px auto;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-input, textarea {
-    display: block;
-    width: 90%;
-    margin: 10px auto;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-family: inherit;
-}
-
-/* BOTÃO PADRÃO */
-.btn {
-    display: inline-block;
-    background: #2ecc71;
-    color: white;
-    padding: 10px 20px;
-    margin: 10px;
-    border-radius: 8px;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    transition: 0.2s;
-    font-size: 15px;
-}
-
-.btn:hover {
-    background: #27ae60;
-}
-
-.btn:disabled {
-    background: #a5d6b8;
-    cursor: default;
-}
-
-ul.lista-simples {
-    list-style: none;
-    padding: 0;
-}
-
-ul.lista-simples li {
-    background: white;
-    padding: 12px 15px;
-    margin: 10px 0;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
+.pessoa-info p{ margin:0; }
+.pessoa-nome{ font-weight:600; font-size:15px; }
+.pessoa-email{ font-size:13px; color:var(--ink-soft); }

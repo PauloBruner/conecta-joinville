@@ -3,53 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ponto de Apoio</title>
+    <title>Dashboard — Ponto de Apoio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="topbar">
-    <span id="topbar-titulo">Ponto de Apoio</span>
-    <button id="btn-logout" class="logout">Sair</button>
+<div class="header-bar">
+    <div class="header-inner">
+        <a class="header-brand" href="dashboard.html">Ponto de Apoio</a>
+        <nav class="header-nav">
+            <a href="dashboard.html">Painel</a>
+            <a href="nova_necessidade.html">Nova necessidade</a>
+            <a href="voluntario.html">Voluntário</a>
+            <a href="ongs.html">Participantes</a>
+            <button id="btn-logout" class="sair">Sair</button>
+        </nav>
+    </div>
 </div>
 
 <div class="container">
+    <h2 id="saudacao">Olá 👋</h2>
+    <p class="muted" style="margin-bottom:24px;">Veja como você pode ajudar hoje.</p>
 
-    <h3 id="saudacao">Olá 👋</h3>
-    <p>Veja como você pode ajudar hoje</p>
-
-    <div class="stats">
+    <div class="stats-row">
         <div class="stat-card">
-            <h3 id="total-ajudas">-</h3>
-            <p>Ajudas realizadas</p>
+            <div class="stat-num" id="total-ajudas">-</div>
+            <div class="stat-label">Ajudas realizadas</div>
         </div>
         <div class="stat-card">
-            <h3 id="total-necessidades">-</h3>
-            <p>Pedidos ativos</p>
+            <div class="stat-num" id="total-necessidades">-</div>
+            <div class="stat-label">Pedidos ativos</div>
         </div>
         <div class="stat-card">
-            <h3 id="total-usuarios">-</h3>
-            <p>Usuários</p>
+            <div class="stat-num" id="total-usuarios">-</div>
+            <div class="stat-label">Usuários</div>
         </div>
     </div>
 
-    <div class="grid">
-        <a href="nova_necessidade.html" class="card-option">💖 Preciso de Ajuda</a>
-        <a href="dashboard.html?tipo=ajudar" class="card-option">🤝 Quero Ajudar</a>
-        <a href="voluntario.html" class="card-option">🙋 Voluntário</a>
-        <a href="ongs.html" class="card-option">🏢 ONGs</a>
-    </div>
-
-    <div id="map" style="height:250px; border-radius:15px; margin-top: 15px;"></div>
+    <div id="map" style="height:250px; border-radius:14px; margin-bottom:28px;"></div>
 
     <h3>Necessidades próximas</h3>
 
     <div id="lista-necessidades">
-        <p class="msg-vazio">Carregando...</p>
+        <p class="empty-state">Carregando...</p>
     </div>
 
-    <a href="nova_necessidade.html" class="btn-nova">+ Nova necessidade</a>
-
+    <a href="nova_necessidade.html" class="btn btn-primary mt-24" style="display:inline-block;">+ Nova necessidade</a>
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>

@@ -64,7 +64,7 @@ async function carregarNecessidades() {
         renderizarNecessidades(necessidades, container);
     } catch (e) {
         console.error("Erro ao carregar necessidades:", e);
-        container.innerHTML = '<p class="msg-erro">Não foi possível carregar as necessidades.</p>';
+        container.innerHTML = '<p class="empty-state">Não foi possível carregar as necessidades.</p>';
     }
 }
 
@@ -76,35 +76,39 @@ async function jaAjudou(necessidadeId) {
 
 function renderizarNecessidades(necessidades, container) {
     if (necessidades.length === 0) {
-        container.innerHTML = '<p class="msg-vazio">Nenhuma necessidade cadastrada ainda.</p>';
+        container.innerHTML = '<p class="empty-state">Nenhuma necessidade cadastrada ainda.</p>';
         return;
     }
 
     container.innerHTML = "";
     necessidades.forEach(async (n) => {
-        const card = document.createElement("div");
-        card.className = "card";
+        const item = document.createElement("div");
+        item.className = "necessidade-item";
 
         const jaAjudouEsta = await jaAjudou(n.id);
 
-        card.innerHTML = `
-            <h4></h4>
-            <p></p>
-            <span class="bairro">📍 </span>
-            <p>👥 <span class="qtd-ajudas"></span> pessoas ajudaram</p>
-            <button class="btn-ajudar">${jaAjudouEsta ? "Você já ajudou 💚" : "Quero ajudar"}</button>
+        item.innerHTML = `
+            <div class="necessidade-info">
+                <h3></h3>
+                <p></p>
+                <span class="tag-bairro"></span>
+            </div>
+            <div style="text-align:right;">
+                <div class="ajuda-count"><span class="qtd-ajudas"></span> pessoas ajudando</div>
+                <button class="btn btn-primary btn-sm" style="margin-top:8px;">${jaAjudouEsta ? "Você já ajudou 💚" : "Quero ajudar"}</button>
+            </div>
         `;
 
-        card.querySelector("h4").textContent = n.titulo;
-        card.querySelector("p").textContent = n.descricao;
-        card.querySelector(".bairro").append(n.bairro);
-        card.querySelector(".qtd-ajudas").textContent = n.totalAjudas;
+        item.querySelector("h3").textContent = n.titulo;
+        item.querySelector("p").textContent = n.descricao;
+        item.querySelector(".tag-bairro").textContent = n.bairro;
+        item.querySelector(".qtd-ajudas").textContent = n.totalAjudas;
 
-        const botao = card.querySelector(".btn-ajudar");
+        const botao = item.querySelector("button");
         if (jaAjudouEsta) botao.disabled = true;
         botao.addEventListener("click", () => ajudar(n.id, botao));
 
-        container.appendChild(card);
+        container.appendChild(item);
     });
 }
 
@@ -119,7 +123,7 @@ async function ajudar(necessidadeId, botao) {
             criadoEm: firebase.firestore.FieldValue.serverTimestamp(),
         });
         botao.textContent = "Você já ajudou 💚";
-        const qtdEl = botao.closest(".card").querySelector(".qtd-ajudas");
+        const qtdEl = botao.closest(".necessidade-item").querySelector(".qtd-ajudas");
         qtdEl.textContent = Number(qtdEl.textContent) + 1;
         carregarStats();
     } catch (e) {
